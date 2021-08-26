@@ -1,5 +1,7 @@
 const fs = require('fs/promises')
-const filePath = require('./filePath')
+const path = require('path')
+
+const filePath = path.join(__dirname, 'contacts.json')
 
 const getAll = async () => {
   try {
@@ -7,7 +9,6 @@ const getAll = async () => {
     const contacts = JSON.parse(data)
     return contacts
   } catch (error) {
-    // throw error
     console.log(error)
   }
 }

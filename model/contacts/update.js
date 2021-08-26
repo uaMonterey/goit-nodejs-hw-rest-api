@@ -6,7 +6,6 @@ const update = async (id, updateInfo) => {
     const contacts = await getAll()
     const idx = contacts.findIndex((item) => item.id === id)
     if (idx === -1) {
-      // throw new Error(`Contact with id=${id} not found`)
       return null
     }
     contacts[idx] = { ...contacts[idx], ...updateInfo }
@@ -14,7 +13,6 @@ const update = async (id, updateInfo) => {
     await updateContacts(contacts)
     return contacts[idx]
   } catch (error) {
-    // throw error
     console.log(error)
   }
 }
