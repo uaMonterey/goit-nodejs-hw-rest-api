@@ -1,13 +1,13 @@
 const app = require('../app')
 const mongoose = require('mongoose')
 
-const DB_URL =
-  'mongodb+srv://Monterey:L7mhlNQf9Vv86zHH@nodejs.i1wya.mongodb.net/db-contacts?retryWrites=true&w=majority'
+require('dotenv').config()
 
+const { DB_HOST } = process.env
 const { PORT = 4000 } = process.env
 
 mongoose
-  .connect(DB_URL, () => {
+  .connect(DB_HOST, () => {
     console.log('Database connection successful')
   })
   .then(
