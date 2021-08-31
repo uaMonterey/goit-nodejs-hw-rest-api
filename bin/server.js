@@ -3,8 +3,7 @@ const mongoose = require('mongoose')
 
 require('dotenv').config()
 
-const { DB_HOST } = process.env
-const { PORT = 4000 } = process.env
+const { DB_HOST, PORT = 4000 } = process.env
 
 mongoose
   .connect(DB_HOST, () => {
@@ -15,4 +14,4 @@ mongoose
       console.log(`Server running. Use our API on port: ${PORT}`)
     })
   )
-  .catch((error) => console.log(error))
+  .catch(() => process.exit(1))
