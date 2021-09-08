@@ -1,5 +1,9 @@
 node_modules
 yarn.log
 yarn.lock
-pakage-lock.json
+yarn-error.log
+package-lock.json
+nodemon.json
+.eslintrc.js
 .env
+.vscode
