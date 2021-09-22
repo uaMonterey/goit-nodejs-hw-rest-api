@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose')
+const gr = require('gravatar')
 const Joi = require('Joi')
 
 const emailRegexp =
@@ -27,6 +28,9 @@ const userSchema = Schema(
     },
     avatarURL: {
       type: String,
+      default: function () {
+        return gr.url(this.email, { s: '250' }, true)
+      },
     },
   },
   { versionKey: false, timestamps: true }
@@ -37,6 +41,7 @@ const joiSchema = Joi.object({
   password: Joi.string().min(6).required(),
   subscription: Joi.string(),
   token: Joi.string(),
+  avatarURL: Joi.string(),
 })
 
 const User = model('user', userSchema)

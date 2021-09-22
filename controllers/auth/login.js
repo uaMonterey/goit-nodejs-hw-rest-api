@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const { BadRequest } = require('http-errors')
 const { User } = require('../../models/user')
 
-const login = async (req, res, _next) => {
+const login = async (req, res) => {
   const { email, password } = req.body
   const user = await User.findOne({ email })
   if (!user) {
