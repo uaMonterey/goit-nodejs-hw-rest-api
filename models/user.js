@@ -33,7 +33,17 @@ const userSchema = Schema(
       },
     },
   },
-  { versionKey: false, timestamps: true }
+  {
+    virtuals: true,
+    versionKey: false,
+    timestamps: true,
+    toJSON: {
+      transform: function (_doc, ret) {
+        delete ret._id
+        return ret
+      },
+    },
+  }
 )
 
 const joiSchema = Joi.object({

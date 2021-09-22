@@ -8,7 +8,7 @@ const currentUser = async (req, res) => {
   }
 
   const { id, email, subscription, avatarURL } = await User.findOne({ token })
-  res.status(200).json({
+  return res.status(200).json({
     status: 'success',
     code: 200,
     ContentType: 'application/json',
