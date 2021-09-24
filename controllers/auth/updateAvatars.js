@@ -8,11 +8,8 @@ const usersDir = path.join(__dirname, '../../', 'public/avatars')
 
 const updateAvatar = async (req, res) => {
   const { id, avatarURL } = req.user
-
   const { path: tempPath, originalname } = req.file
-
   const uploadPath = path.join(usersDir, id, `${id}-${originalname}`)
-
   const pic = await jimp.read(tempPath)
   await pic
     .autocrop()
