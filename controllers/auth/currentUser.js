@@ -7,12 +7,12 @@ const currentUser = async (req, res) => {
     throw new Unauthorized()
   }
 
-  const { id, email, subscription, avatarURL } = await User.findOne({ token })
+  const { id, email, subscription, avatarURL, verifyToken, isVerified } = await User.findOne({ token })
   return res.status(200).json({
     status: 'success',
     code: 200,
     ContentType: 'application/json',
-    ResponseBody: { id, email, subscription, avatarURL },
+    ResponseBody: { id, email, subscription, avatarURL, verifyToken, isVerified },
   })
 }
 module.exports = currentUser

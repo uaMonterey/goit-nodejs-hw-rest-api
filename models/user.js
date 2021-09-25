@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose')
 const gr = require('gravatar')
 const Joi = require('Joi')
+const { nanoid } = require('nanoid')
 
 const emailRegexp =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -31,6 +32,15 @@ const userSchema = Schema(
       default: function () {
         return gr.url(this.email, { s: '250' }, true)
       },
+    },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
+    verifyToken: {
+      type: String,
+      required: [true, 'Verify token is required'],
+      default: nanoid(),
     },
   },
   {
